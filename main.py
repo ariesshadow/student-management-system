@@ -1,10 +1,11 @@
 import mysql.connector
 import pandas as pd
+import os
 
 conn = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="123!Bangtan.",
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
     database="Student_Performer_Analyzer"
 )
 
@@ -20,3 +21,4 @@ print(average_marks)
 topper = df.loc[df["marks"].idxmax()] #returns the index of the first occurrence of the max value
 print("\nTop scorer:")
 print(topper)
+
